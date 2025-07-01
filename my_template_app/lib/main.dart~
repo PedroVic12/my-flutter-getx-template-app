@@ -153,7 +153,7 @@ class MyApp extends StatelessWidget {
     final ui = Get.find<UIStateController>();
     return Obx(
       () => GetMaterialApp(
-        title: 'My App Template V 2.1.1',
+        title: 'Todo GetX App',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
@@ -183,7 +183,7 @@ class HomePage extends StatelessWidget {
     return Obx(
       () => Scaffold(
         appBar: AppBar(
-          title: const Text('Todo GetX MVC App + Dart Vaden Controller -> Crud Sqlite'),
+          title: const Text('Todo GetX App'),
           actions: [
             IconButton(
               icon: Icon(
