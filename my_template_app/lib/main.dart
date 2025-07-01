@@ -468,11 +468,20 @@ class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
+    return const Column(
+        children: [
+Text(
         'Exemplo de Todo App para estudante e programador de Eng. Elétrica.\nCRUD, menu lateral, MVC, GetX, dark mode.\nNotas em Markdown com checkboxes interativos no preview.',
         textAlign: TextAlign.center,
       ),
-    );
+
+    Text("\n\n"),
+
+ Text(
+        'Ainda falta implementar Sqlite, LocalStorage com Controllador Separado.\nOrganizar arquivos e refatoração com testes unitarios.\nConstruçao do CRUD completo com resposta na API url.\nBuilderListView, OBS, UseState com GetX para meu aplicativo',
+        textAlign: TextAlign.center,
+      ),
+ 
+            ]);
   }
 }

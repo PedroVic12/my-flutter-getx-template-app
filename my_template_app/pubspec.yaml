@@ -38,6 +38,7 @@ dependencies:
   get: ^4.7.2
   dio: ^5.8.0+1
   flutter_markdown: ^0.7.7+1
+  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:
