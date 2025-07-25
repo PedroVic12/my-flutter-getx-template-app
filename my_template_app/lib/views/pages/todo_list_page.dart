@@ -30,8 +30,12 @@ class TodoListHomePage extends StatelessWidget {
             ),
           ],
         ),
-        drawer: const MenuDrawer(),
-        body: ui.selectedPage.value == 0 ? const TodoPage() : const AboutPage(),
+        drawer: MenuDrawer(
+          selectedIndex: ui.selectedPage.value,
+          onSelect: (index) => ui.selectedPage.value = index,
+          pages: appPages,
+        ),
+        body: appPages[ui.selectedPage.value]['widget'],
       ),
     );
   }

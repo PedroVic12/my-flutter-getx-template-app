@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_template_app/domain/controllers/backend_controller.dart';
+import 'package:my_template_app/views/pages/financial_app_controlefinanceiro.dart';
+import 'package:my_template_app/views/pages/my_home_page.dart';
 import 'views/pages/todo_list_page.dart';
 
 // MAIN
@@ -9,6 +11,27 @@ void main() {
   Get.put(UIStateController());
   runApp(const MyApp());
 }
+
+final temas = [
+  ThemeData(
+    primarySwatch: Colors.blue,
+    fontFamily: 'Inter',
+    scaffoldBackgroundColor: const Color(0xFFf1f5f9),
+    cardTheme: CardThemeData(
+      elevation: 12,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      margin: const EdgeInsets.symmetric(vertical: 8),
+    ),
+  ),
+
+  ThemeData(
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: const Color.fromARGB(255, 55, 104, 197),
+    ),
+    useMaterial3: true,
+    brightness: Brightness.light,
+  ),
+];
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -19,13 +42,7 @@ class MyApp extends StatelessWidget {
       () => GetMaterialApp(
         title: 'My App Template V 3.1.1',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 55, 104, 197),
-          ),
-          useMaterial3: true,
-          brightness: Brightness.light,
-        ),
+        theme: temas[1],
         darkTheme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
             seedColor: Colors.black26,
@@ -36,6 +53,21 @@ class MyApp extends StatelessWidget {
         ),
         themeMode: ui.themeMode.value,
         home: const TodoListHomePage(),
+        initialRoute: '/money',
+        getPages: [
+          GetPage(
+            name: '/',
+            page: () => const TodoListHomePage(),
+            binding: BindingsBuilder(() {
+              Get.put(TodoBackendController());
+              Get.put(UIStateController());
+            }),
+          ),
+
+          GetPage(name: '/money', page: () => const FinancialHomePage()),
+
+          GetPage(name: '/template_app', page: () => const MyTemplateApp()),
+        ],
       ),
     );
   }
