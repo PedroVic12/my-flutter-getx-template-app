@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:my_template_app/domain/controllers/backend_controller.dart';
 import 'package:my_template_app/views/pages/financial_app_controlefinanceiro.dart';
 import 'package:my_template_app/views/pages/my_home_page.dart';
-import "package:my_template_app/views/template/kanban_board.dart";
+import 'package:my_template_app/views/template/kanban_board.dart';
 import 'views/pages/todo_list_page.dart';
 
 // MAIN
@@ -36,6 +36,7 @@ final temas = [
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     final ui = Get.find<UIStateController>();
@@ -53,8 +54,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
         ),
         themeMode: ui.themeMode.value,
-        //home: const TodoListHomePage(),
-        initialRoute: '/kanban',
+        initialRoute: '/kanban', // Set the initial route to Kanban
         getPages: [
           GetPage(
             name: '/todo',
@@ -66,8 +66,13 @@ class MyApp extends StatelessWidget {
           ),
           GetPage(name: '/money', page: () => const FinancialHomePage()),
           GetPage(name: '/template_app', page: () => const MyTemplateApp()),
-          GetPage(name: '/kanban', page: () => const KanbanProApp()),
+          GetPage(
+            name: '/kanban',
+            page: () => const KanbanProApp(),
+          ), // Kanban route
         ],
+        locale: Get.deviceLocale, // Add this line
+        fallbackLocale: const Locale('en', 'US'), // And this line
       ),
     );
   }
