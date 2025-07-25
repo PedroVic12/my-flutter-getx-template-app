@@ -1,8 +1,10 @@
+// src/main.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_template_app/domain/controllers/backend_controller.dart';
 import 'package:my_template_app/views/pages/financial_app_controlefinanceiro.dart';
 import 'package:my_template_app/views/pages/my_home_page.dart';
+import "package:my_template_app/views/template/kanban_board.dart";
 import 'views/pages/todo_list_page.dart';
 
 // MAIN
@@ -23,7 +25,6 @@ final temas = [
       margin: const EdgeInsets.symmetric(vertical: 8),
     ),
   ),
-
   ThemeData(
     colorScheme: ColorScheme.fromSeed(
       seedColor: const Color.fromARGB(255, 55, 104, 197),
@@ -52,21 +53,20 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
         ),
         themeMode: ui.themeMode.value,
-        home: const TodoListHomePage(),
-        initialRoute: '/money',
+        //home: const TodoListHomePage(),
+        initialRoute: '/kanban',
         getPages: [
           GetPage(
-            name: '/',
+            name: '/todo',
             page: () => const TodoListHomePage(),
             binding: BindingsBuilder(() {
               Get.put(TodoBackendController());
               Get.put(UIStateController());
             }),
           ),
-
           GetPage(name: '/money', page: () => const FinancialHomePage()),
-
           GetPage(name: '/template_app', page: () => const MyTemplateApp()),
+          GetPage(name: '/kanban', page: () => const KanbanProApp()),
         ],
       ),
     );
