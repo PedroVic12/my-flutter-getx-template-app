@@ -8,11 +8,15 @@ class TodoModel {
   String title;
   bool done;
   String note;
+  String status;
+  int xp;
   TodoModel({
     required this.id,
     required this.title,
     this.done = false,
     this.note = "",
+    this.status = 'TODO',
+    this.xp = 0,
   });
 
   factory TodoModel.fromJson(Map<String, dynamic> json) => TodoModel(

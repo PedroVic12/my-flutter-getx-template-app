@@ -11,14 +11,18 @@ import 'views/pages/todo_list_page.dart';
 void main() {
   Get.put(TodoBackendController());
   Get.put(UIStateController());
+
+
+
   runApp(const MyApp());
 }
+
 
 final temas = [
   ThemeData(
     primarySwatch: Colors.blue,
     fontFamily: 'Inter',
-    scaffoldBackgroundColor: const Color(0xFFf1f5f9),
+    scaffoldBackgroundColor: const Color( 0xFFF5F5F5),
     cardTheme: CardThemeData(
       elevation: 12,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -42,7 +46,7 @@ class MyApp extends StatelessWidget {
     final ui = Get.find<UIStateController>();
     return Obx(
       () => GetMaterialApp(
-        title: 'My App Template V 3.1.1',
+        title: 'My App Template V 4.2.1',
         debugShowCheckedModeBanner: false,
         theme: temas[1],
         darkTheme: ThemeData(
@@ -54,15 +58,11 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
         ),
         themeMode: ui.themeMode.value,
-        initialRoute: '/kanban', // Set the initial route to Kanban
+        initialRoute: '/todo', // Set the initial route to Kanban
         getPages: [
           GetPage(
             name: '/todo',
             page: () => const TodoListHomePage(),
-            binding: BindingsBuilder(() {
-              Get.put(TodoBackendController());
-              Get.put(UIStateController());
-            }),
           ),
           GetPage(name: '/money', page: () => const FinancialHomePage()),
           GetPage(name: '/template_app', page: () => const MyTemplateApp()),
