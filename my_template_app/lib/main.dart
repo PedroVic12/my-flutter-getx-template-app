@@ -12,17 +12,14 @@ void main() {
   Get.put(TodoBackendController());
   Get.put(UIStateController());
 
-
-
   runApp(const MyApp());
 }
-
 
 final temas = [
   ThemeData(
     primarySwatch: Colors.blue,
     fontFamily: 'Inter',
-    scaffoldBackgroundColor: const Color( 0xFFF5F5F5),
+    scaffoldBackgroundColor: Colors.white10,
     cardTheme: CardThemeData(
       elevation: 12,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -60,10 +57,7 @@ class MyApp extends StatelessWidget {
         themeMode: ui.themeMode.value,
         initialRoute: '/todo', // Set the initial route to Kanban
         getPages: [
-          GetPage(
-            name: '/todo',
-            page: () => const TodoListHomePage(),
-          ),
+          GetPage(name: '/todo', page: () => const TodoListHomePage()),
           GetPage(name: '/money', page: () => const FinancialHomePage()),
           GetPage(name: '/template_app', page: () => const MyTemplateApp()),
           GetPage(
