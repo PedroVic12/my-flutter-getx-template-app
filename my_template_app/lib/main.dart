@@ -21,8 +21,8 @@ final temas = [
     fontFamily: 'Inter',
     scaffoldBackgroundColor: Colors.white10,
     cardTheme: CardThemeData(
-      elevation: 12,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      elevation: 26,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       margin: const EdgeInsets.symmetric(vertical: 8),
     ),
   ),
