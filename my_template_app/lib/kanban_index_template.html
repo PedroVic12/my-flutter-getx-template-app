@@ -97,9 +97,9 @@
                 if (!this.db) {
                     this.db = {
                         projects: [
-                            { id: '1', title: 'Implementar Dashboard RCE WEB APP', status: 'concluido', category: 'flutter', priority: 'normal', content: '- [x] Criar cards de estatísticas\n- [x] Implementar gráfico de status\n- [x] Implementar gráfico de categorias', createdAt: new Date('2023-10-01'), updatedAt: new Date('2023-10-15') },
+                            { id: '1', title: 'Implementar Dashboard RCE WEB APP', status: 'backlog', category: 'flutter', priority: 'normal', content: '- [x] Criar cards de estatísticas\n- [x] Implementar gráfico de status\n- [x] Implementar gráfico de categorias', createdAt: new Date('2023-10-01'), updatedAt: new Date('2023-10-15') },
                             { id: '2', title: 'Desenvolver Tela de controle financeiro', status: 'concluido', category: 'flutter', priority: 'compromisso', content: '- [x] Criar componente de tabela\n- [x] Adicionar paginação e filtros', createdAt: new Date('2023-10-05'), updatedAt: new Date('2023-10-20') },
-                            { id: '3', title: 'Estudar Análise e Simulaçções de Sistemas de Potência', status: 'in progress', category: 'ons', priority: 'urgente', content: '- [x] Ler sobre Fluxo de Potência\n- [ ] Simular circuito no ANAREDE', createdAt: new Date(), updatedAt: new Date() },
+                            { id: '3', title: 'Estudar Análise e Simulações de Sistemas de Potência', status: 'in progress', category: 'ons', priority: 'urgente', content: '- [x] Ler sobre Fluxo de Potência\n- [ ] Simular circuito no ANAREDE', createdAt: new Date(), updatedAt: new Date() },
                             { id: '5', title: 'Preparar Relatório Semanal', status: 'todo', category: 'ons', priority: 'compromisso', content: '- [ ] Coletar dados de performance\n- [ ] Gerar gráficos\n- [ ] Redigir sumário executivo', createdAt: new Date(), updatedAt: new Date() },
                             { id: '6', title: 'Desenvolver Algoritmo de IA e fazer mapa mental', status: 'backlog', category: 'python', priority: 'normal', content: 'Definir escopo do projeto de IA para otimização de redes.', createdAt: new Date(), updatedAt: new Date() },
                             { id: '7', title: 'Revisar conteudos da UFF', status: 'review', category: 'backend', priority: 'normal', content: '- [x] Verificar endpoint /users\n- [ ] Documentar endpoint /projects', createdAt: new Date(), updatedAt: new Date() },
@@ -177,11 +177,17 @@
         const repository = new DataRepository();
 
         const STATUS_COLUMNS = {
+            'uff': { title: 'UFF 2025', emoji: '❌' },
+            'ons': { title: 'ONS - ESTÁGIO', emoji: '🔧' },
             'backlog': { title: 'Backlog', emoji: '📦' },
-            'todo': { title: 'A Fazer', emoji: '📝' },
+            'todo': { title: 'TODO', emoji: '📝' },
             'in progress': { title: 'Em Progresso', emoji: '⏳' },
+            'concluido': { title: 'Concluído', emoji: '✅' },
+
             'review': { title: 'Revisão', emoji: '👀' },
-            'concluido': { title: 'Concluído', emoji: '✅' }
+            'agentes': { title: 'Agentes de IA', emoji: '🤖' },
+            'parados': { title: 'Projetos Parados', emoji: '🚫' },
+
         };
 
         const CATEGORIES = {
