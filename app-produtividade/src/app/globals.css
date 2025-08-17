@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(33,40,74);
+  font-weight: 500;
+}
+
+h1{
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #151875;
+  text-align: center;
+}
+
+img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+span {
+  width: max-content ;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+}
+
+.container {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.todo-list {
+  background-color: antiquewhite;
+  border-radius: 1rem;
+  margin-bottom: 4.8rem;
+  min-width: 400px;
+  box-shadow: -1px 5px 20px 10px rgba(157,162,235,0.3);
+  padding: 1.6rem;
+}
+
+
