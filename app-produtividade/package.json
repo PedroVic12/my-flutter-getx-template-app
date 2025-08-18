@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "json-server": "json-server --watch db.json --port 3001"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -20,6 +21,7 @@
     "@stencil/react-output-target": "^1.0.3",
     "chart.js": "^4.4.9",
     "ionicons": "^8.0.9",
+    "json-server": "^1.0.0-beta.3",
     "next": "15.3.3",
     "react": "^19.0.0",
     "react-chartjs-2": "^5.3.0",

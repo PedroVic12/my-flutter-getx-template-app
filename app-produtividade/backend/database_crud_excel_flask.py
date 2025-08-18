@@ -243,8 +243,21 @@ class ScrumCRUDStrategy(CRUDStrategy):
         self.db = db
     
     def create(self, data):
-        # Implementação similar
-        pass
+        df = self.db.read_excel(SCRUM_PLANNER_PATH)
+        
+        new_row = {
+            "ID": self.db.generate_id(),
+            "Todo": data.get("Todo", False),
+            "InProgress": data.get("InProgress", False),
+            "Concluido": data.get("Concluido", False),
+            "AgentesAI": data.get("AgentesAI", ""),
+            "Projetos Parados": data.get("Projetos Parados", False)
+        }
+        
+        new_df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
+        self.db.save_excel(new_df, SCRUM_PLANNER_PATH)
+        self.db.save_sql(new_df, "ScrumPlanner")
+        return new_row["ID"]
     
     def read(self):
         df = self.db.read_excel(SCRUM_PLANNER_PATH)
@@ -321,6 +334,12 @@ class FlaskServer:
         def get_scrum_planner():
             items = self.scrum_controller.read()
             return jsonify(items)
+        
+        @self.app.route('/api/scrum_planner', methods=['POST'])
+        def add_scrum_item():
+            data = request.json
+            item_id = self.scrum_controller.create(data)
+            return jsonify({"success": True, "id": item_id})
         
         @self.app.route('/api/scrum_planner/move', methods=['POST'])
         def move_scrum_item():

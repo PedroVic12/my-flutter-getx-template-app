@@ -1,0 +1,31 @@
+
+{
+  "todo": [
+    {
+      "ID": "1",
+      "Atividade": "Configurar o ambiente de desenvolvimento",
+      "Categoria": "Projetos",
+      "Tempo": 120,
+      "Data": "2025-08-18",
+      "Status": "Concluído"
+    },
+    {
+      "ID": "2",
+      "Atividade": "Criar a estrutura inicial do projeto",
+      "Categoria": "Projetos",
+      "Tempo": 90,
+      "Data": "2025-08-19",
+      "Status": "Em andamento"
+    },
+    {
+      "ID": "3",
+      "Atividade": "Estudar a documentação do Next.js",
+      "Categoria": "Estudos",
+      "Tempo": 60,
+      "Data": "2025-08-19",
+      "Status": "Pendente"
+    }
+  ],
+  "plano_atividades": [],
+  "scrum_planner": []
+}

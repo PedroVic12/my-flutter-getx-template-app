@@ -382,7 +382,7 @@ class TodoListController {
   
   async loadTasks() {
     try {
-      const response = await fetch('/api/todo');
+      const response = await fetch('http://localhost:3001/todo');
       const data = await response.json();
       this.tasks = data;
       if (this.setTasks) this.setTasks(data);
@@ -393,17 +393,15 @@ class TodoListController {
   
   async addTask(task: Omit<Task, 'ID'>) {
     try {
-      const response = await fetch('/api/todo', {
+      const response = await fetch('http://localhost:3001/todo', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(task)
       });
       
       const result = await response.json();
-      if (result.success) {
-        await this.loadTasks();
-        return result.id;
-      }
+      await this.loadTasks();
+      return result.id;
     } catch (error) {
       console.error("Erro ao adicionar tarefa:", error);
     }
@@ -412,17 +410,15 @@ class TodoListController {
   
   async updateTask(task: Task) {
     try {
-      const response = await fetch(`/api/todo/${task.ID}`, {
+      const response = await fetch(`http://localhost:3001/todo/${task.ID}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(task)
       });
       
       const result = await response.json();
-      if (result.success) {
-        await this.loadTasks();
-        return true;
-      }
+      await this.loadTasks();
+      return true;
     } catch (error) {
       console.error("Erro ao atualizar tarefa:", error);
     }
@@ -431,15 +427,13 @@ class TodoListController {
   
   async deleteTask(id: string) {
     try {
-      const response = await fetch(`/api/todo/${id}`, {
+      const response = await fetch(`http://localhost:3001/todo/${id}`, {
         method: 'DELETE'
       });
       
       const result = await response.json();
-      if (result.success) {
-        await this.loadTasks();
-        return true;
-      }
+      await this.loadTasks();
+      return true;
     } catch (error) {
       console.error("Erro ao deletar tarefa:", error);
     }
@@ -448,17 +442,20 @@ class TodoListController {
   
   async addTimeToTask(id: string, minutes: number) {
     try {
-      const response = await fetch(`/api/todo/${id}/add_time`, {
-        method: 'POST',
+      const task = this.tasks.find(t => t.ID === id);
+      if (!task) return false;
+
+      const updatedTask = { ...task, Tempo: (task.Tempo || 0) + minutes };
+
+      const response = await fetch(`http://localhost:3001/todo/${id}`, {
+        method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ minutes })
+        body: JSON.stringify(updatedTask)
       });
       
       const result = await response.json();
-      if (result.success) {
-        await this.loadTasks();
-        return true;
-      }
+      await this.loadTasks();
+      return true;
     } catch (error) {
       console.error("Erro ao adicionar tempo:", error);
     }
@@ -637,7 +634,7 @@ function PlanoAtividades() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/plano_atividades');
+        const response = await fetch('http://localhost:3001/plano_atividades');
         const data = await response.json();
         setPlanItems(data);
       } catch (error) {
@@ -714,7 +711,7 @@ function ScrumPlanner() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/scrum_planner');
+        const response = await fetch('http://localhost:3001/scrum_planner');
         const data = await response.json();
         setScrumItems(data);
       } catch (error) {
